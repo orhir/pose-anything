@@ -173,10 +173,7 @@
             <p>
 The core idea of our work is to take advantage of the geometrical structure encoded in the pose graph. Our method is built upon the enhanced baseline, replacing the transformer decoder module with our novel Graph Transformer Decoder.
             </p>
-            <div class="has-text-centered">
-              <img src="./static/images/graph_decoder.png" />
-              <br />
-            </div>
+            
             <p>
               We recognize that self-attention, a mechanism that helps our model focus on relevant information, can be thought of as a graph convolutional network (GCN) with a learnable adjacency matrix. When we are dealing with pose estimation for a single category, this mechanism is sufficient for learning the relationships between keypoints and integrating a learned structure into the model.
 However, for category-agnostic pose estimation (CAPE) tasks, where the model needs to work with various object categories, it is beneficial to explicitly consider the semantic connections between keypoints. This helps the model break symmetry, maintain consistent structure, and handle noisy keypoints by sharing information among neighboring keypoints.
