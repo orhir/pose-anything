@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pose Anything: A Graph-Based Approach for Category-Agnostic Pose Estimation</title>
+
+  <!-- Meta tags -->
+  <meta name="keywords" content="Pose Anything: A Graph-Based Approach for Category-Agnostic Pose Estimation">
+  <meta property="og:site_name" content="Pose Anything">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Pose Anything">
+  <meta name="description"
+    content="A Graph-Based Approach for Category-Agnostic Pose Estimation">
+  <meta property="og:description"
+    content="A Graph-Based Approach for Category-Agnostic Pose Estimation">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" type="text/css" href="./static/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="./static/slick/slick-theme.css" />
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script type="text/javascript" src="./static/slick/slick.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- <script type="text/javascript" src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js"></script> -->
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Pose Anything: A Graph-Based Approach for Category-Agnostic Pose Estimation</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="">Or Hirschorn</a>,
+              </span>
+              <span class="author-block">
+                <a href="">Shai Avidan</a>
+              </span>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Tel Aviv University</span>
+            </div>
+
+            <!-- <div>
+              <p style="font-size:23px;font-weight:bold;padding-top: 5px;">CVPR 2023</p>
+            </div> -->
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>PDF</span>
+                  </a>
+                </span>
+
+                <!-- arXiv Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/???" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div id="teaser" class="has-text-centered">
+          <img style="width: 50%;" src="./static/images/Pose_Anything_Teaser.png" alt="Pose Anything teaser.">
+        </div>
+
+<!--        <video id="teaser" autoplay="" controls="" muted="" loop="" playsinline="" height="100%">-->
+<!--          <source src="static/videos/the_chosen_one_teaser.mp4" type="video/mp4">-->
+<!--        </video>-->
+
+        <h2 class="subtitle has-text-centered">
+          <span class="method-name">Pose Anything</span> - given only <b><i>one</i></b> example image and skeleton, our method
+          can perform pose estimation on unseen categories.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract. -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Traditional 2D pose estimation models are limited by their category-specific design, making them suitable only for predefined object categories. This restriction becomes particularly challenging when dealing with novel objects due to the lack of relevant training data.
+              To address this limitation, category-agnostic pose estimation (CAPE) was introduced. CAPE aims to enable keypoint localization for arbitrary object categories using a single model, requiring minimal <b>Support</b> images with annotated keypoints. This approach not only enables object pose generation based on arbitrary keypoint definitions but also significantly reduces the associated costs, paving the way for versatile and adaptable pose estimation applications.
+              We present a novel approach to CAPE that leverages the inherent geometrical relations between keypoints through a newly designed Graph Transformer Decoder. By capturing and incorporating this crucial structural information, our method enhances the accuracy of keypoint localization, marking a significant departure from conventional CAPE techniques that treat keypoints as isolated entities.
+              We validate our approach on the MP-100 benchmark, a comprehensive dataset comprising over 20,000 images spanning more than 100 categories. Our method outperforms the prior state-of-the-art by substantial margins, achieving remarkable improvements of  2.16% and 1.82% under 1-shot and 5-shot settings, respectively. Furthermore, our method's end-to-end training demonstrates both scalability and efficiency compared to previous CAPE approaches.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper video. -->
+  <!-- <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-12">
+          <div class="content has-text-justified">
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Video</h2>
+                <div class="publication-video">
+                  <iframe src="https://www.youtube.com/embed/VlieNoCwHO4?rel=0&amp;showinfo=0" frameborder="0"
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Method explanation -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-12">
+          <h2 class="title is-3">Method</h2>
+
+          <div class="content has-text-justified">
+            <div class="has-text-centered">
+              <img src="./static/images/arch.png" />
+              <br />
+            </div>
+            <p>
+The core idea of our work is to take advantage of the geometrical structure encoded in the pose graph. Our method is built upon the enhanced baseline, replacing the transformer decoder module with our novel Graph Transformer Decoder.
+            </p>
+            <div class="has-text-centered">
+              <img src="./static/images/graph_decoder.png" />
+              <br />
+            </div>
+            <p>
+              We recognize that self-attention, a mechanism that helps our model focus on relevant information, can be thought of as a graph convolutional network (GCN) with a learnable adjacency matrix. When we are dealing with pose estimation for a single category, this mechanism is sufficient for learning the relationships between keypoints and integrating a learned structure into the model.
+However, for category-agnostic pose estimation (CAPE) tasks, where the model needs to work with various object categories, it is beneficial to explicitly consider the semantic connections between keypoints. This helps the model break symmetry, maintain consistent structure, and handle noisy keypoints by sharing information among neighboring keypoints.
+We implemented this prior in the transformer decoder. Specifically, GTD is based on the original CapeFormer decoder, changing the feed-forward network from a simple MLP to a GCN network. To address the potential problem of excessive smoothing often observed in deep GCNs, which can lead to a reduction in the distinctiveness of node characteristics and consequently a decline in performance, we introduce a linear layer for each node following the GCN layer.
+            </p>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- General Examples -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-12">
+          <h2 class="title is-3">Results</h2>
+          <h3 class="title is-4">Qualitative Results</h3>
+          <div class="content has-text-justified">
+            <p>
+              Using our method, given a <b>support</b> image and skeleton we can perform structure-consistent pose estimation on images from unseen categories.
+            </p>
+          </div>
+
+          <section class="hero is-light is-small">
+            <div class="hero-body">
+              <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/23_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/23_1_GT.png" />
+                    <p class="caption"><b>GT</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/23_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/36_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/36_1_gt.png" />
+                    <p class="caption"><b>GT</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/36_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/50_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/50_1_gt.png" />
+                    <p class="caption"><b>GT</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/50_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                                    <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/63_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/63_1_gt.png" />
+                    <p class="caption"><b>GT</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/63_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/69_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/69_1_GT.png" />
+                    <p class="caption"><b>GT</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/69_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+
+                                    <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/84_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/84_1_gt.png" />
+                    <p class="caption"><b>GT</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/84_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/81_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/81_1_GT.png" />
+                    <p class="caption"><b>GT</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/qualitative/81_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-12">
+          <h3 class="title is-4">Out-of-Distribution</h3>
+          <div class="content has-text-justified">
+            <p>
+Our model, which was trained on real images only, demonstrates its adaptability and effectiveness across varying data sources such as cartoons and imaginary animals, created using a diffusion model. Furthermore, our model demonstrates satisfactory performance even when the <b>Support</b> and query images are from different domains.
+            </p>
+          </div>
+
+          <section class="hero is-light is-small">
+            <div class="hero-body">
+              <div class="container">
+                <div id="ood-carousel" class="carousel ood-carousel">
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/0_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/0_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                    <div class="item has-text-centered">
+                    <img src="./static/images/ood/1_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/1_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+
+                                      <div class="item has-text-centered">
+                    <img src="./static/images/ood/1_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/1_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+
+                                      <div class="item has-text-centered">
+                    <img src="./static/images/ood/1_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/1_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+
+
+                                      <div class="item has-text-centered">
+                    <img src="./static/images/ood/2_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/2_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+
+
+                                      <div class="item has-text-centered">
+                    <img src="./static/images/ood/7_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/7_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+
+
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/8_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/8_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/9_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/9_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/11_0.png" />
+                    <p class="caption"><b>Support</b></p>
+                  </div>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/ood/11_1.png" />
+                    <p class="caption"><b>Ours</b></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-12">
+          <h3 class="title is-4">Quantitative Results</h3>
+          <div class="content has-text-justified">
+            <p>
+
+              We compare our method with the previous CAPE methods CapeFormer and POMNet and three baselines:  ProtoNet, MAML, and Fine-tuned.
+
+We report results on the MP-100 dataset under 1-shot and 5-shot settings. As can be seen, the enhanced baseline models, which are agnostic to the keypoints order as opposed to CapeFormer, outperform previous methods and improve the average PCK by 0.94% under the 1-shot setting and 1.60% under the 5-shot setting.
+Our graph-based method further improves performance, improving the enhanced baseline by 1.22% under the 1-shot setting and 0.22% under the 5-shot setting, achieving new state-of-the-art results for both settings.
+We also show the scalability of our design. Similar to DETR-based models, employing a larger backbone improves performance. We show that our graph decoder design also enhances the performance of the larger enhanced baseline, improving results by 1.02% and 0.34% under 1-shot and 5-shot settings respectively.
+
+            </p>
+                  <div class="item has-text-centered">
+                    <img src="./static/images/quantitative.png" />
+                  </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <p>If you find this research useful, please cite the following:</p>
+
+      <pre><code>
+
+      </code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <p>
+          This page was adapted from <a href="https://github.com/nerfies/nerfies.github.io">this</a> source code.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
