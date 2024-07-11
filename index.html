@@ -41,7 +41,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Pose Anything: A Graph-Based Approach for Category-Agnostic Pose Estimation</h1>
+            <h1 class="title is-1 publication-title">A Graph-Based Approach for Category-Agnostic Pose Estimation</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://orhir.github.io">Or Hirschorn</a>,
@@ -91,6 +91,17 @@
                   </a>
                 </span>
 
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://drive.google.com/drive/folders/1uRyGB-P5Tc_6TmAZ6RnOi0SWjGq9b28T?usp=sharing"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-google-drive"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span>
+
               </div>
             </div>
           </div>
@@ -112,7 +123,7 @@
 <!--        </video>-->
 
         <h2 class="subtitle has-text-centered">
-          <span class="method-name">Pose Anything</span> - given only <b><i>one</i></b> example image and skeleton, our method
+          <span class="method-name"></span>Given only <b><i>one</i></b> example image and skeleton, our method
           can perform pose estimation on unseen categories.
         </h2>
       </div>
@@ -127,10 +138,9 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Traditional 2D pose estimation models are limited by their category-specific design, making them suitable only for predefined object categories. This restriction becomes particularly challenging when dealing with novel objects due to the lack of relevant training data.
-              To address this limitation, category-agnostic pose estimation (CAPE) was introduced. CAPE aims to enable keypoint localization for arbitrary object categories using a single model, requiring minimal <b>Support</b> images with annotated keypoints. This approach not only enables object pose generation based on arbitrary keypoint definitions but also significantly reduces the associated costs, paving the way for versatile and adaptable pose estimation applications.
-              We present a novel approach to CAPE that leverages the inherent geometrical relations between keypoints through a newly designed Graph Transformer Decoder. By capturing and incorporating this crucial structural information, our method enhances the accuracy of keypoint localization, marking a significant departure from conventional CAPE techniques that treat keypoints as isolated entities.
-              We validate our approach on the MP-100 benchmark, a comprehensive dataset comprising over 20,000 images spanning more than 100 categories. Our method outperforms the prior state-of-the-art by substantial margins, achieving remarkable improvements of  2.16% and 1.82% under 1-shot and 5-shot settings, respectively. Furthermore, our method's end-to-end training demonstrates both scalability and efficiency compared to previous CAPE approaches.
+Traditional 2D pose estimation models are limited by their category-specific design, making them suitable only for predefined object categories. This restriction becomes particularly challenging when dealing with novel objects due to the lack of relevant training data. To address this limitation, category-agnostic pose estimation (CAPE) was introduced. CAPE aims to enable keypoint localization for arbitrary object categories using a few-shot single model, requiring minimal support images with annotated keypoints.
+We present a significant departure from conventional CAPE techniques, which treat keypoints as isolated entities, by treating the input pose data as a graph. We leverage the inherent geometrical relations between keypoints through a graph-based network to break symmetry, preserve structure, and better handle occlusions. We validate our approach on the MP-100 benchmark, a comprehensive dataset comprising over 20,000 images spanning over 100 categories. Our solution boosts performance by 0.98% under a 1-shot setting, achieving a new state-of-the-art for CAPE. Additionally, we enhance the dataset with skeleton annotations.
+Our code and data are publicly available.
             </p>
           </div>
         </div>
